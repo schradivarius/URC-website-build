@@ -1,5 +1,5 @@
 /* ==========================================================================
-   UH Mars Rover — site behaviour
+   Houston Apollos — site behaviour
    Vanilla JS, no dependencies. Every feature degrades gracefully:
    with JS off the site is still fully readable and navigable.
    ========================================================================== */

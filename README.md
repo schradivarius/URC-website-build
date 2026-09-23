@@ -1,4 +1,4 @@
-# UH Mars Rover — team website
+# Houston Apollos — team website
 
 The website for the University of Houston's University Rover Challenge team.
 
