@@ -42,7 +42,7 @@ team.html         Leadership cards and the five subteams
 sponsors.html     Why sponsor, tiers, in-kind, budget split, logo wall
 join.html         Why join, open roles, process, FAQ, contact form
 assets/css/style.css   All styling. Colours live in the :root block at the top.
-assets/js/main.js      Nav drawer, scroll reveals, stat counters, hero starfield
+assets/js/main.js      Nav drawer, scroll reveals, stat counters, interactive starfield
 assets/img/            Logo, favicon, rover illustration, portrait placeholder
 ```
 
@@ -118,6 +118,12 @@ link; keep that when you copy.)
 
 - Accessible by default: skip link, focus outlines, labelled controls, semantic headings.
 - Respects `prefers-reduced-motion` — animations and the starfield turn off.
+- The hero starfield follows the cursor: the field parts around the pointer, nearby stars
+  brighten, and short lines stitch them into a constellation. Three constants at the top of
+  that block in `main.js` tune it — `REACH` (influence radius), `SHOVE` (how far stars are
+  pushed) and `LINK` (how close two lit stars must be to be joined). It only paints while
+  the hero is on screen in a visible tab, and the cursor interaction is skipped on touch
+  devices.
 - Works with JavaScript disabled; JS only adds the mobile drawer, reveals and counters.
 - The rover illustration in `assets/img/rover.svg` is a stand-in. Replace it with a CAD
   render or a photo of the real machine when you have one — that single swap does more for

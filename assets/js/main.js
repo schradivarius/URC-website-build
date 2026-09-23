@@ -156,9 +156,14 @@
     requestAnimationFrame(frame);
   }
 
-  /* --- Hero starfield ----------------------------------------------------
-     A slow parallax drift of stars behind the hero. Skipped entirely when
-     the visitor prefers reduced motion (the CSS gradients carry the look). */
+  /* --- Hero starfield -----------------------------------------------------
+     A slow drift of stars behind the hero that answers to the cursor: the
+     field parts around the pointer, the stars it passes brighten, and short
+     lines stitch them into a constellation.
+
+     It is pure decoration, so it gives way easily — no starfield at all for
+     reduced-motion visitors, and no cursor interaction on touch devices
+     (there is no cursor to follow, and no reason to spend their battery).  */
 
   var canvas = document.querySelector(".hero__stars");
 
@@ -168,7 +173,21 @@
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var w = 0;
     var h = 0;
-    var running = true;
+
+    var REACH = 175; // px — radius of the cursor's influence
+    var SHOVE = 28; // px — how far a star directly under the cursor is pushed
+    var LINK = 95; // px — how close two lit stars must be to be joined
+
+    // Pointer state in canvas coordinates. `now` values are eased toward the
+    // `to` values every frame so the field glides instead of snapping, and
+    // `str` fades the whole effect in and out as the cursor comes and goes.
+    var ptr = { x: 0, y: 0, toX: 0, toY: 0, str: 0, toStr: 0, seen: false };
+
+    // Lit stars for this frame, kept in parallel arrays we reuse rather than
+    // reallocating sixty times a second.
+    var litX = [];
+    var litY = [];
+    var litG = [];
 
     function seed() {
       var rect = canvas.getBoundingClientRect();
@@ -181,45 +200,173 @@
       var density = Math.min(Math.round((w * h) / 9000), 220);
       stars = [];
       for (var i = 0; i < density; i++) {
+        // depth 0 = far away, 1 = close. It drives drift speed, parallax
+        // travel and size together, which is what sells the illusion.
+        var depth = Math.random();
         stars.push({
           x: Math.random() * w,
           y: Math.random() * h,
-          r: Math.random() * 1.3 + 0.25,
-          // Deeper stars drift slower — cheap parallax.
-          vx: -(Math.random() * 0.14 + 0.02),
+          depth: depth,
+          r: 0.25 + depth * 1.3,
+          vx: -(0.02 + depth * 0.14),
           a: Math.random() * 0.5 + 0.2,
           tw: Math.random() * 0.012 + 0.003,
-          dir: Math.random() > 0.5 ? 1 : -1
+          dir: Math.random() > 0.5 ? 1 : -1,
+          ox: 0,
+          oy: 0,
+          scarlet: i % 11 === 0
         });
       }
     }
 
-    function draw() {
-      if (!running) return;
+    function paint() {
+      // Ease pointer position and influence.
+      ptr.str += (ptr.toStr - ptr.str) * 0.07;
+      ptr.x += (ptr.toX - ptr.x) * 0.13;
+      ptr.y += (ptr.toY - ptr.y) * 0.13;
+
+      var live = ptr.str > 0.01;
+      // Parallax runs off the cursor's offset from the centre of the hero.
+      var parX = live ? ((ptr.x - w / 2) / w) * 30 * ptr.str : 0;
+      var parY = live ? ((ptr.y - h / 2) / h) * 18 * ptr.str : 0;
+
       ctx.clearRect(0, 0, w, h);
+      litX.length = litY.length = litG.length = 0;
 
       for (var i = 0; i < stars.length; i++) {
         var s = stars[i];
+
         s.x += s.vx;
-        if (s.x < -2) {
-          s.x = w + 2;
+        if (s.x < -4) {
+          s.x = w + 4;
           s.y = Math.random() * h;
         }
 
         s.a += s.tw * s.dir;
         if (s.a <= 0.15 || s.a >= 0.8) s.dir *= -1;
 
-        // A handful of stars carry the scarlet tint.
-        ctx.fillStyle =
-          i % 11 === 0
-            ? "rgba(236, 39, 67, " + s.a.toFixed(3) + ")"
-            : "rgba(255, 255, 255, " + s.a.toFixed(3) + ")";
+        // Nearer stars travel further with the cursor than distant ones.
+        var px = s.x - parX * s.depth;
+        var py = s.y - parY * s.depth;
+
+        // Push away from the cursor, with a squared falloff so the edge of
+        // the effect is soft rather than a visible circle.
+        var wantX = 0;
+        var wantY = 0;
+        var glow = 0;
+
+        if (live) {
+          var dx = px - ptr.x;
+          var dy = py - ptr.y;
+          var d2 = dx * dx + dy * dy;
+
+          if (d2 < REACH * REACH) {
+            var d = Math.sqrt(d2) || 0.0001;
+            var f = 1 - d / REACH;
+            f *= f;
+            wantX = (dx / d) * SHOVE * f * ptr.str;
+            wantY = (dy / d) * SHOVE * f * ptr.str;
+            glow = f * ptr.str;
+          }
+        }
+
+        // Spring toward the target offset — and back to rest when the cursor
+        // moves on, so nothing stays permanently displaced.
+        s.ox += (wantX - s.ox) * 0.14;
+        s.oy += (wantY - s.oy) * 0.14;
+
+        var x = px + s.ox;
+        var y = py + s.oy;
+        var alpha = Math.min(s.a + glow * 0.7, 1);
+
+        ctx.fillStyle = s.scarlet
+          ? "rgba(236, 39, 67, " + alpha.toFixed(3) + ")"
+          : "rgba(255, 255, 255, " + alpha.toFixed(3) + ")";
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.arc(x, y, s.r + glow * 0.9, 0, Math.PI * 2);
         ctx.fill();
+
+        if (glow > 0.12) {
+          litX.push(x);
+          litY.push(y);
+          litG.push(glow);
+        }
       }
 
-      requestAnimationFrame(draw);
+      // Constellation. Only the handful of lit stars are considered, so the
+      // pairwise pass stays cheap no matter how dense the field is.
+      ctx.lineWidth = 1;
+
+      for (var a = 0; a < litX.length; a++) {
+        ctx.strokeStyle = "rgba(236, 39, 67, " + (litG[a] * 0.45).toFixed(3) + ")";
+        ctx.beginPath();
+        ctx.moveTo(ptr.x, ptr.y);
+        ctx.lineTo(litX[a], litY[a]);
+        ctx.stroke();
+
+        for (var b = a + 1; b < litX.length; b++) {
+          var lx = litX[a] - litX[b];
+          var ly = litY[a] - litY[b];
+          var l2 = lx * lx + ly * ly;
+
+          if (l2 < LINK * LINK) {
+            var o = (1 - Math.sqrt(l2) / LINK) * Math.min(litG[a], litG[b]) * 0.4;
+            ctx.strokeStyle = "rgba(255, 255, 255, " + o.toFixed(3) + ")";
+            ctx.beginPath();
+            ctx.moveTo(litX[a], litY[a]);
+            ctx.lineTo(litX[b], litY[b]);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    /* Run loop. The field only paints while it is both on screen and in a
+       visible tab — scrolling past the hero costs nothing.                  */
+
+    var running = false;
+    var onScreen = true;
+
+    function loop() {
+      if (!running) return;
+      paint();
+      requestAnimationFrame(loop);
+    }
+
+    function sync() {
+      var shouldRun = onScreen && !document.hidden;
+      if (shouldRun === running) return;
+      running = shouldRun;
+      if (running) requestAnimationFrame(loop);
+    }
+
+    if (window.matchMedia("(pointer: fine)").matches) {
+      window.addEventListener(
+        "mousemove",
+        function (e) {
+          // Measured per move so the mapping survives scrolling and layout
+          // shifts without a cache to keep in sync.
+          var r = canvas.getBoundingClientRect();
+          ptr.toX = e.clientX - r.left;
+          ptr.toY = e.clientY - r.top;
+
+          // Start where the cursor actually is, so the first move doesn't
+          // drag a wave across the hero from the top-left corner.
+          if (!ptr.seen) {
+            ptr.seen = true;
+            ptr.x = ptr.toX;
+            ptr.y = ptr.toY;
+          }
+
+          ptr.toStr = 1;
+        },
+        { passive: true }
+      );
+
+      // Cursor left the window entirely.
+      document.addEventListener("mouseleave", function () {
+        ptr.toStr = 0;
+      });
     }
 
     var resizeTimer;
@@ -228,18 +375,17 @@
       resizeTimer = setTimeout(seed, 200);
     });
 
-    // Stop painting when the hero scrolls out of view or the tab is hidden.
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        running = false;
-      } else if (!running) {
-        running = true;
-        requestAnimationFrame(draw);
-      }
-    });
+    document.addEventListener("visibilitychange", sync);
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        onScreen = entries[0].isIntersecting;
+        sync();
+      }).observe(canvas);
+    }
 
     seed();
-    requestAnimationFrame(draw);
+    sync();
   }
 
   /* --- Footer year ------------------------------------------------------- */
