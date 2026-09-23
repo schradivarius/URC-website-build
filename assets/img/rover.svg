@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" width="820" height="440"
+     role="img" aria-labelledby="rover-title rover-desc">
+  <title id="rover-title">Side view of the team's Mars rover</title>
+  <desc id="rover-desc">A six-wheeled rocker-bogie rover with a camera mast, a robotic arm folded at the
+    front, a science payload bay and a communications antenna.</desc>
+
+  <defs>
+    <linearGradient id="chassis" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#232730"/>
+      <stop offset="1" stop-color="#101217"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c8102e"/>
+      <stop offset="1" stop-color="#8c0a1f"/>
+    </linearGradient>
+    <radialGradient id="shadow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c8102e" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#c8102e" stop-opacity="0"/>
+    </radialGradient>
+    <g id="wheel">
+      <circle r="49" fill="#0f1116" stroke="#3b414d" stroke-width="7"/>
+      <circle r="44" fill="none" stroke="#5a6272" stroke-width="9"
+              stroke-dasharray="7 15" stroke-linecap="round" opacity=".75"/>
+      <circle r="27" fill="none" stroke="#2a2e37" stroke-width="4"/>
+      <circle r="11" fill="#c8102e"/>
+      <circle r="4" fill="#10121a"/>
+    </g>
+  </defs>
+
+  <!-- ground haze -->
+  <ellipse cx="410" cy="392" rx="360" ry="46" fill="url(#shadow)"/>
+  <line x1="60" y1="392" x2="760" y2="392" stroke="#2a2e37" stroke-width="2" stroke-dasharray="2 14"/>
+
+  <!-- rocker-bogie linkage -->
+  <g stroke="#4a515e" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M165 330 L300 252 L420 268"/>
+    <path d="M400 330 L300 252"/>
+    <path d="M640 330 L545 262"/>
+  </g>
+  <circle cx="300" cy="252" r="9" fill="#2a2e37" stroke="#5a6272" stroke-width="3"/>
+
+  <!-- chassis -->
+  <rect x="236" y="176" width="372" height="90" rx="16" fill="url(#chassis)" stroke="#454c59" stroke-width="3"/>
+  <rect x="252" y="192" width="126" height="58" rx="8" fill="#0d0f14" stroke="#2f343e" stroke-width="2"/>
+  <text x="315" y="227" text-anchor="middle" font-family="'Space Grotesk',sans-serif"
+        font-size="20" font-weight="700" fill="#5e6673" letter-spacing="2">UH</text>
+  <rect x="396" y="192" width="90" height="58" rx="8" fill="url(#panel)" opacity=".9"/>
+  <g fill="#0d0f14" opacity=".55">
+    <rect x="404" y="200" width="74" height="6" rx="3"/>
+    <rect x="404" y="214" width="52" height="6" rx="3"/>
+    <rect x="404" y="228" width="64" height="6" rx="3"/>
+  </g>
+  <rect x="502" y="192" width="90" height="58" rx="8" fill="#0d0f14" stroke="#2f343e" stroke-width="2"/>
+  <g fill="#3b414d">
+    <circle cx="522" cy="212" r="5"/><circle cx="542" cy="212" r="5"/><circle cx="562" cy="212" r="5"/>
+    <circle cx="522" cy="232" r="5"/><circle cx="542" cy="232" r="5"/>
+    <circle cx="562" cy="232" r="5" fill="#c8102e"/>
+  </g>
+
+  <!-- science payload drawer under the chassis -->
+  <rect x="330" y="266" width="150" height="26" rx="7" fill="#161a21" stroke="#3b414d" stroke-width="3"/>
+  <line x1="352" y1="292" x2="352" y2="312" stroke="#4a515e" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="352" cy="318" r="9" fill="#0f1116" stroke="#c8102e" stroke-width="3"/>
+
+  <!-- camera mast -->
+  <line x1="566" y1="176" x2="566" y2="96" stroke="#4a515e" stroke-width="11" stroke-linecap="round"/>
+  <rect x="518" y="52" width="96" height="46" rx="10" fill="#171b22" stroke="#4a515e" stroke-width="3"/>
+  <circle cx="542" cy="75" r="12" fill="#0a0c10" stroke="#c8102e" stroke-width="3"/>
+  <circle cx="542" cy="75" r="4" fill="#ec2743"/>
+  <circle cx="586" cy="75" r="9" fill="#0a0c10" stroke="#5a6272" stroke-width="3"/>
+  <rect x="556" y="40" width="20" height="12" rx="3" fill="#2a2e37"/>
+
+  <!-- communications antenna -->
+  <line x1="280" y1="176" x2="262" y2="120" stroke="#4a515e" stroke-width="7" stroke-linecap="round"/>
+  <path d="M232 112a32 20 0 0 1 60 0z" fill="#171b22" stroke="#5a6272" stroke-width="3"
+        transform="rotate(-18 262 112)"/>
+  <circle cx="262" cy="106" r="5" fill="#c8102e"/>
+
+  <!-- GNSS whip -->
+  <line x1="600" y1="176" x2="618" y2="128" stroke="#3b414d" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="618" cy="124" r="5" fill="#5a6272"/>
+
+  <!-- robotic arm, stowed forward -->
+  <g fill="none" stroke="#5a6272" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M242 206 L152 162"/>
+    <path d="M152 162 L104 232"/>
+  </g>
+  <g fill="none" stroke="#2f343e" stroke-width="5" stroke-linecap="round">
+    <path d="M242 206 L152 162"/>
+    <path d="M152 162 L104 232"/>
+  </g>
+  <circle cx="242" cy="206" r="13" fill="#171b22" stroke="#c8102e" stroke-width="4"/>
+  <circle cx="152" cy="162" r="12" fill="#171b22" stroke="#c8102e" stroke-width="4"/>
+  <!-- gripper -->
+  <g stroke="#7a8496" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M104 232 L78 252"/>
+    <path d="M104 232 L86 264"/>
+  </g>
+
+  <!-- wheels -->
+  <use href="#wheel" x="165" y="330"/>
+  <use href="#wheel" x="400" y="330"/>
+  <use href="#wheel" x="640" y="330"/>
+</svg>

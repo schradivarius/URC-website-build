@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UH Mars Rover — University of Houston Robotics</title>
+<meta name="description" content="The University of Houston's student-built Mars rover team, competing in the University Rover Challenge at the Mars Desert Research Station in Hanksville, Utah.">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+<!-- Social preview. Swap the og:image for a real photo once you have one. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="UH Mars Rover — University of Houston">
+<meta property="og:description" content="Students designing, building and driving a Mars rover for the University Rover Challenge.">
+<meta property="og:image" content="assets/img/rover.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER (keep this block in sync across all pages) ============ -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+      <span class="brand__text">
+        <span class="brand__name">UH Mars Rover</span>
+        <span class="brand__sub">University of Houston</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="rover.html">The Rover</a>
+      <a href="team.html">Team</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="join.html">Join Us</a>
+      <a class="btn btn--sm header-cta" href="join.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <canvas class="hero__stars" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="hero__inner">
+        <p class="hero__status">
+          <span class="pulse" aria-hidden="true"></span>
+          <!-- EDIT: current season status -->
+          2026 season &middot; building toward the Mars Desert Research Station
+        </p>
+        <h1>
+          Engineering for another planet
+          <span class="accent">from the Space City.</span>
+        </h1>
+        <p class="hero__lead">
+          We are a student team at the University of Houston designing, building and driving a
+          Mars rover for the University Rover Challenge &mdash; the world's premier robotics
+          competition for the next generation of planetary explorers.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="rover.html">
+            Meet the rover
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="join.html">Join the team</a>
+        </div>
+      </div>
+    </div>
+    <a class="hero__scroll" href="#mission">
+      <span>Scroll</span>
+      <span class="line" aria-hidden="true"></span>
+    </a>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="section section--tight">
+    <div class="container">
+      <!-- EDIT: replace these four numbers with your real ones. -->
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat__value"><span data-count="4">4</span></div>
+          <div class="stat__label">Competition missions</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value"><span data-count="60" data-suffix="+">60+</span></div>
+          <div class="stat__label">Student members</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value"><span data-count="5">5</span></div>
+          <div class="stat__label">Engineering subteams</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value"><span data-count="38" data-suffix="">38</span></div>
+          <div class="stat__label">Finalist teams worldwide</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISSION / ABOUT ============ -->
+  <section class="section" id="mission">
+    <div class="container">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">Our mission</p>
+          <h2>Build the rover that would keep astronauts alive.</h2>
+          <p class="lead">
+            The University Rover Challenge asks students to build the next generation of
+            Mars rovers &mdash; machines capable of working alongside human crews on the
+            surface of another world. Every design decision we make answers to that premise.
+          </p>
+          <ul class="checklist">
+            <li>Every part is designed, machined, wired and coded by students.</li>
+            <li>Open to every major &mdash; engineering, computer science, geology, business and design.</li>
+            <li>Judged each June in the Utah desert against the best teams on the planet.</li>
+          </ul>
+          <a class="arrow-link" href="join.html">
+            How to get involved
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="split__media reveal" data-delay="1">
+          <p class="eyebrow">The competition</p>
+          <h3 style="margin-bottom:18px">University Rover Challenge</h3>
+          <p class="muted" style="font-size:.95rem">
+            Hosted by The Mars Society at the Mars Desert Research Station outside
+            Hanksville, Utah. Roughly a hundred teams enter each year; a field of
+            <strong>38 finalists</strong> earns the trip to the desert.
+          </p>
+          <dl class="contact-list" style="margin-top:24px">
+            <div>
+              <dt class="label">Where</dt>
+              <dd class="value" style="margin:0">Hanksville, Utah &mdash; MDRS</dd>
+            </div>
+            <div>
+              <dt class="label">When</dt>
+              <dd class="value" style="margin:0">Finals each spring</dd>
+            </div>
+            <div>
+              <dt class="label">Crew</dt>
+              <dd class="value" style="margin:0">Undergraduate &amp; graduate students</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE FOUR MISSIONS ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">Four missions, one rover</p>
+        <h2>What the rover has to do</h2>
+        <p class="lead" style="margin-inline:auto">
+          A single machine, under 50&nbsp;kg, has to clear all four field missions in the
+          Utah desert &mdash; with the operators sitting a kilometre away and out of sight.
+        </p>
+      </div>
+
+      <div class="grid grid--4">
+        <article class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v6l-5.5 9.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-2.5L14 9V3"/><path d="M7.5 15h9"/></svg>
+          </div>
+          <h3>Science</h3>
+          <p class="muted">
+            Collect and analyse soil samples in the field, then defend a hypothesis about
+            past or present life to a panel of scientists.
+          </p>
+        </article>
+
+        <article class="card reveal" data-delay="1">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+          </div>
+          <h3>Delivery</h3>
+          <p class="muted">
+            Find and ferry tools, containers and supplies across rough terrain to
+            astronauts scattered around the site.
+          </p>
+        </article>
+
+        <article class="card reveal" data-delay="2">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 6.5a4 4 0 0 0 5 5L21 10a5.5 5.5 0 0 1-7.6 6.3L7 22.7 4.3 20l6.4-6.4A5.5 5.5 0 0 1 17 6l-2.5.5z"/></svg>
+          </div>
+          <h3>Equipment servicing</h3>
+          <p class="muted">
+            Operate a lander mock-up with the robotic arm: flip switches, turn valves,
+            type on a keypad and insert a cache &mdash; all by camera.
+          </p>
+        </article>
+
+        <article class="card reveal" data-delay="3">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg>
+          </div>
+          <h3>Autonomous navigation</h3>
+          <p class="muted">
+            Drive to a series of GNSS waypoints and visual markers with no human input
+            &mdash; no joystick, no teleoperation, no excuses.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROVER TEASER ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="split__media reveal" style="padding:clamp(16px,3vw,32px)">
+          <img src="assets/img/rover.svg" alt="Side view of the rover: six wheels on a rocker-bogie suspension, a camera mast and a robotic arm." width="820" height="440" loading="lazy">
+        </div>
+        <div class="reveal" data-delay="1">
+          <p class="eyebrow">The machine</p>
+          <!-- EDIT: your rover's name. -->
+          <h2>Meet <span style="color:var(--scarlet-bright)">Shasta</span></h2>
+          <p class="lead">
+            A six-wheeled, rocker-bogie rover built for the red rock of the San Rafael Swell:
+            a six-degree-of-freedom arm, an onboard science lab, and an autonomy stack that
+            can find its own way to a waypoint.
+          </p>
+          <div class="tag-row" style="margin-bottom:28px">
+            <span class="tag tag--scarlet">Rocker-bogie chassis</span>
+            <span class="tag">6-DOF arm</span>
+            <span class="tag">Onboard science lab</span>
+            <span class="tag">ROS 2 autonomy</span>
+            <span class="tag">1&nbsp;km comms link</span>
+          </div>
+          <a class="btn btn--ghost" href="rover.html">Full specifications</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SEASON TIMELINE ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Season</p>
+        <h2>How a build year runs</h2>
+      </div>
+      <!-- EDIT: adjust months and milestones to your actual schedule. -->
+      <ol class="timeline reveal">
+        <li>
+          <span class="when">August &mdash; September</span>
+          <h3>Recruit &amp; concept</h3>
+          <p>New members join subteams, last season's rover gets torn down, and we set the design goals for the year.</p>
+        </li>
+        <li>
+          <span class="when">October &mdash; December</span>
+          <h3>Design &amp; prototype</h3>
+          <p>CAD, circuit boards, software architecture. Subsystems get prototyped and reviewed before anything is cut.</p>
+        </li>
+        <li>
+          <span class="when">January &mdash; March</span>
+          <h3>Build &amp; System Acceptance Review</h3>
+          <p>Machining, wiring and integration, then the video and written report that decide which teams reach the finals.</p>
+        </li>
+        <li>
+          <span class="when">April &mdash; May</span>
+          <h3>Field testing</h3>
+          <p>Full mission rehearsals on Texas dirt: drive time, arm runs, autonomy trials, and failures found here instead of in Utah.</p>
+        </li>
+        <li>
+          <span class="when">Competition</span>
+          <h3>Mars Desert Research Station</h3>
+          <p>Four missions, three days, one rover &mdash; against the best student teams in the world.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ SPONSORS STRIP ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">Backed by</p>
+        <h2>Our sponsors</h2>
+        <p class="lead" style="margin-inline:auto">
+          Every bearing, motor controller and plane ticket is paid for by people who
+          believe in students building hard things.
+        </p>
+      </div>
+      <!-- EDIT: replace each placeholder with <a href="..."><img src="assets/img/sponsors/name.svg" alt="Name"></a> -->
+      <div class="logo-wall reveal">
+        <div>Your logo here</div>
+        <div>Your logo here</div>
+        <div>Your logo here</div>
+        <div>Your logo here</div>
+        <div>Your logo here</div>
+        <div>Your logo here</div>
+      </div>
+      <div class="btn-row" style="justify-content:center;margin-top:40px">
+        <a class="btn" href="sponsors.html">Sponsor the team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta-band reveal">
+        <p class="eyebrow" style="justify-content:center">Ad astra</p>
+        <h2>Come build a rover with us</h2>
+        <p>
+          No experience required &mdash; just the willingness to learn, show up and get your
+          hands dirty. We train every member who walks through the door.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="join.html">Join the team</a>
+          <a class="btn btn--ghost" href="join.html#contact">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (keep this block in sync across all pages) ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+          <span class="brand__text">
+            <span class="brand__name">UH Mars Rover</span>
+            <span class="brand__sub">University of Houston</span>
+          </span>
+        </a>
+        <p>
+          A student engineering team at the University of Houston competing in the
+          University Rover Challenge.
+        </p>
+        <!-- EDIT: point these at your real accounts, or delete the ones you don't use. -->
+        <div class="socials">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rover.html">The Rover</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <!-- EDIT: real email address -->
+          <li><a href="mailto:marsrover@uh.edu">marsrover@uh.edu</a></li>
+          <li><a href="https://urc.marssociety.org/" rel="noopener">University Rover Challenge</a></li>
+          <li><a href="https://www.uh.edu/" rel="noopener">University of Houston</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> UH Mars Rover &middot; University of Houston</span>
+      <span class="motto">Ad astra</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rover — UH Mars Rover</title>
+<meta name="description" content="Specifications and subsystems of the University of Houston's student-built Mars rover: chassis, robotic arm, science payload, electronics, autonomy and communications.">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+      <span class="brand__text">
+        <span class="brand__name">UH Mars Rover</span>
+        <span class="brand__sub">University of Houston</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="rover.html" aria-current="page">The Rover</a>
+      <a href="team.html">Team</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="join.html">Join Us</a>
+      <a class="btn btn--sm header-cta" href="join.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">The machine</p>
+      <!-- EDIT: your rover's name and one-line description. -->
+      <h1>Shasta</h1>
+      <p class="lead">
+        A six-wheeled rover built to work where a person can't: 50&nbsp;kilograms of chassis,
+        arm, science lab and autonomy, driven from a kilometre away with nothing but a
+        camera feed and a radio link.
+      </p>
+      <div class="tag-row" style="margin-top:24px">
+        <span class="tag tag--scarlet">2026 season</span>
+        <span class="tag">Rocker-bogie</span>
+        <span class="tag">6-DOF arm</span>
+        <span class="tag">ROS 2</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ILLUSTRATION + SPECS ============ -->
+  <section class="section">
+    <div class="container">
+      <figure class="rover-figure reveal" style="margin:0 0 56px">
+        <img src="assets/img/rover.svg" alt="Side view of the rover showing three of its six wheels on a rocker-bogie suspension, the camera mast, the communications dish and the robotic arm folded forward." width="820" height="440">
+        <figcaption>
+          Side elevation. <!-- EDIT: swap for a CAD render or a photo when you have one. -->
+        </figcaption>
+      </figure>
+
+      <div class="grid grid--2">
+        <!-- EDIT: every value below is a placeholder. Put your real numbers in. -->
+        <div class="card reveal">
+          <table class="spec-table">
+            <caption>Chassis &amp; mobility</caption>
+            <tbody>
+              <tr><th scope="row">Mass</th><td>48 kg</td></tr>
+              <tr><th scope="row">Footprint</th><td>1.15 &times; 0.90 m</td></tr>
+              <tr><th scope="row">Suspension</th><td>Passive rocker-bogie</td></tr>
+              <tr><th scope="row">Drive</th><td>6 &times; independently driven wheels</td></tr>
+              <tr><th scope="row">Steering</th><td>Skid steer</td></tr>
+              <tr><th scope="row">Top speed</th><td>1.4 m/s</td></tr>
+              <tr><th scope="row">Obstacle clearance</th><td>1.5 &times; wheel diameter</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card reveal" data-delay="1">
+          <table class="spec-table">
+            <caption>Power, compute &amp; comms</caption>
+            <tbody>
+              <tr><th scope="row">Battery</th><td>Li-ion, 48 V nominal</td></tr>
+              <tr><th scope="row">Endurance</th><td>&gt; 2 hours of mission driving</td></tr>
+              <tr><th scope="row">Onboard compute</th><td>NVIDIA Jetson + real-time MCUs</td></tr>
+              <tr><th scope="row">Middleware</th><td>ROS 2 (C++ / Python)</td></tr>
+              <tr><th scope="row">Link</th><td>900 MHz control, 5 GHz video</td></tr>
+              <tr><th scope="row">Range</th><td>1 km, non-line-of-sight capable</td></tr>
+              <tr><th scope="row">Localisation</th><td>RTK GNSS + IMU + wheel odometry</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUBSYSTEMS ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Under the panels</p>
+        <h2>Subsystems</h2>
+        <p class="lead">
+          Five subteams, one machine. Each group owns its subsystem end to end &mdash;
+          requirements, design, fabrication, test and the field repairs at 3&nbsp;a.m.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <article class="subsystem">
+          <div class="subsystem__label"><span class="idx">01</span>Chassis &amp; drivetrain</div>
+          <div class="subsystem__body">
+            <p>
+              A welded aluminium frame on a passive rocker-bogie suspension that keeps all six
+              wheels loaded over broken rock. Custom hubs, gearboxes and machined wheels give
+              us clearance over obstacles taller than the wheels themselves, without a single
+              actuator in the suspension to fail in the field.
+            </p>
+            <div class="tag-row">
+              <span class="tag">SolidWorks</span><span class="tag">FEA</span>
+              <span class="tag">CNC &amp; welding</span><span class="tag">Drivetrain design</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="subsystem">
+          <div class="subsystem__label"><span class="idx">02</span>Robotic arm</div>
+          <div class="subsystem__body">
+            <p>
+              Six degrees of freedom, roughly a metre of reach, and a gripper that has to be
+              gentle enough for a keyboard and strong enough for a jerry can. The equipment
+              servicing mission is won or lost here: every joint is designed around repeatable,
+              camera-guided placement under teleoperation delay.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Inverse kinematics</span><span class="tag">Harmonic drives</span>
+              <span class="tag">Closed-loop control</span><span class="tag">End effector design</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="subsystem">
+          <div class="subsystem__label"><span class="idx">03</span>Science payload</div>
+          <div class="subsystem__body">
+            <p>
+              An auger collects subsurface regolith into a sealed carousel, where onboard
+              instruments measure moisture, pH and temperature and run a fluorescence assay
+              for organic compounds. The results, plus site imagery and stratigraphy, become
+              the evidence our science team defends in front of the judges.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Sample handling</span><span class="tag">Spectroscopy</span>
+              <span class="tag">Geology</span><span class="tag">Lab protocol</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="subsystem">
+          <div class="subsystem__label"><span class="idx">04</span>Electronics &amp; power</div>
+          <div class="subsystem__body">
+            <p>
+              Custom PCBs handle motor control, power distribution and sensing off a 48&nbsp;V
+              battery, with fusing, e-stop and thermal margins sized for a desert afternoon.
+              Harnessing is built to be serviceable &mdash; connectors labelled, runs documented,
+              spares packed.
+            </p>
+            <div class="tag-row">
+              <span class="tag">KiCad</span><span class="tag">Power distribution</span>
+              <span class="tag">Embedded C</span><span class="tag">CAN bus</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="subsystem">
+          <div class="subsystem__label"><span class="idx">05</span>Software &amp; autonomy</div>
+          <div class="subsystem__body">
+            <p>
+              A ROS 2 stack ties perception, localisation and planning together: fuse RTK GNSS
+              with IMU and wheel odometry, detect the mission's fiducial markers and objects
+              with onboard vision, and plan a path over terrain the operator can't see. The
+              same stack drives the ground-station UI our drivers use for the other three missions.
+            </p>
+            <div class="tag-row">
+              <span class="tag">ROS 2</span><span class="tag">Computer vision</span>
+              <span class="tag">SLAM &amp; path planning</span><span class="tag">Web UI</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTING ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">Validation</p>
+          <h2>Nothing ships untested</h2>
+          <p class="lead">
+            Utah is the worst possible place to discover a problem. So we find them at home:
+            full mission rehearsals on Texas terrain, with the driver blind to the field and
+            the clock running exactly as it will at competition.
+          </p>
+          <ul class="checklist">
+            <li>Bench tests on every board before it touches the rover.</li>
+            <li>Drive-hour targets logged before each design freeze.</li>
+            <li>Timed, scored mission rehearsals with a real operations crew.</li>
+            <li>A written failure log &mdash; every anomaly root-caused before competition.</li>
+          </ul>
+          <a class="btn btn--ghost" href="join.html">Work on this with us</a>
+        </div>
+        <div class="split__media reveal" data-delay="1">
+          <p class="eyebrow">Season status</p>
+          <!-- EDIT: keep this list current — it's the thing returning visitors check. -->
+          <h3 style="margin-bottom:20px">Where we are right now</h3>
+          <ul class="checklist" style="margin-bottom:0">
+            <li>Chassis design frozen and in fabrication.</li>
+            <li>Arm joint prototypes on the test bench.</li>
+            <li>Science carousel in its second revision.</li>
+            <li>Autonomy stack driving waypoints on the test field.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+          <span class="brand__text">
+            <span class="brand__name">UH Mars Rover</span>
+            <span class="brand__sub">University of Houston</span>
+          </span>
+        </a>
+        <p>
+          A student engineering team at the University of Houston competing in the
+          University Rover Challenge.
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rover.html">The Rover</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="join.html">Join Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:marsrover@uh.edu">marsrover@uh.edu</a></li>
+          <li><a href="https://urc.marssociety.org/" rel="noopener">University Rover Challenge</a></li>
+          <li><a href="https://www.uh.edu/" rel="noopener">University of Houston</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> UH Mars Rover &middot; University of Houston</span>
+      <span class="motto">Ad astra</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
