@@ -21,11 +21,14 @@
 /* 01. Tokens & reset ------------------------------------------------------ */
 
 :root {
-  /* Brand — University of Houston scarlet red (#C8102E) */
-  --scarlet: #c8102e;
-  --scarlet-bright: #ec2743;
-  --scarlet-deep: #8c0a1f;
-  --scarlet-glow: rgba(200, 16, 46, 0.35);
+  /* Brand red. Note: UH's official scarlet is #C8102E — this is a punchier,
+     purer red chosen for the site. Put the official value back here if you
+     ever need to match university brand collateral exactly; everything else
+     on the site follows this one token. */
+  --scarlet: #c90000;
+  --scarlet-bright: #ef1414;
+  --scarlet-deep: #8e0000;
+  --scarlet-glow: rgba(201, 0, 0, 0.35);
 
   /* Neutrals */
   --black: #08090b;
@@ -50,7 +53,7 @@
   --r: 12px;
   --r-lg: 20px;
   --shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.9);
-  --shadow-glow: 0 0 0 1px rgba(200, 16, 46, 0.35), 0 20px 50px -25px var(--scarlet-glow);
+  --shadow-glow: 0 0 0 1px rgba(201, 0, 0, 0.35), 0 20px 50px -25px var(--scarlet-glow);
 
   /* Layout */
   --container: 1200px;
@@ -88,8 +91,8 @@ body::before {
   inset: 0 0 auto 0;
   height: 90vh;
   background:
-    radial-gradient(60% 55% at 12% 0%, rgba(200, 16, 46, 0.14), transparent 70%),
-    radial-gradient(45% 45% at 88% 8%, rgba(200, 16, 46, 0.07), transparent 70%);
+    radial-gradient(60% 55% at 12% 0%, rgba(201, 0, 0, 0.14), transparent 70%),
+    radial-gradient(45% 45% at 88% 8%, rgba(201, 0, 0, 0.07), transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -161,13 +164,13 @@ p {
 
 a {
   color: var(--scarlet-bright);
-  text-decoration-color: rgba(236, 39, 67, 0.4);
+  text-decoration-color: rgba(239, 20, 20, 0.4);
   text-underline-offset: 3px;
   transition: color 0.18s ease, text-decoration-color 0.18s ease;
 }
 
 a:hover {
-  color: #ff5a71;
+  color: #ff4d4d;
   text-decoration-color: currentColor;
 }
 
@@ -300,7 +303,7 @@ a:hover {
 
 .btn--ghost:hover {
   border-color: var(--scarlet);
-  background: rgba(200, 16, 46, 0.08);
+  background: rgba(201, 0, 0, 0.08);
 }
 
 .btn--sm {
@@ -346,9 +349,9 @@ a:hover {
 }
 
 .tag--scarlet {
-  border-color: rgba(200, 16, 46, 0.45);
-  background: rgba(200, 16, 46, 0.12);
-  color: #ff8b9c;
+  border-color: rgba(201, 0, 0, 0.45);
+  background: rgba(201, 0, 0, 0.12);
+  color: #ff8f8f;
 }
 
 .tag-row {
@@ -545,7 +548,7 @@ a:hover {
   width: 150vw;
   height: 90vh;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 0%, rgba(200, 16, 46, 0.22), rgba(140, 10, 31, 0.08) 45%, transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(201, 0, 0, 0.22), rgba(140, 10, 31, 0.08) 45%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -582,9 +585,9 @@ a:hover {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(236, 39, 67, 0.55); }
-  70% { box-shadow: 0 0 0 12px rgba(236, 39, 67, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(236, 39, 67, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(239, 20, 20, 0.55); }
+  70% { box-shadow: 0 0 0 12px rgba(239, 20, 20, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 20, 20, 0); }
 }
 
 .hero h1 {
@@ -679,7 +682,7 @@ a:hover {
 
 .card:hover {
   transform: translateY(-4px);
-  border-color: rgba(200, 16, 46, 0.4);
+  border-color: rgba(201, 0, 0, 0.4);
   box-shadow: var(--shadow-glow);
 }
 
@@ -697,9 +700,9 @@ a:hover {
   display: grid;
   place-items: center;
   margin-bottom: 20px;
-  border: 1px solid rgba(200, 16, 46, 0.35);
+  border: 1px solid rgba(201, 0, 0, 0.35);
   border-radius: var(--r);
-  background: rgba(200, 16, 46, 0.1);
+  background: rgba(201, 0, 0, 0.1);
   color: var(--scarlet-bright);
 }
 
@@ -748,7 +751,7 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(60% 60% at 70% 20%, rgba(200, 16, 46, 0.16), transparent 70%);
+  background: radial-gradient(60% 60% at 70% 20%, rgba(201, 0, 0, 0.16), transparent 70%);
   pointer-events: none;
 }
 
@@ -829,11 +832,11 @@ a:hover {
 /* Call-to-action banner */
 .cta-band {
   position: relative;
-  border: 1px solid rgba(200, 16, 46, 0.35);
+  border: 1px solid rgba(201, 0, 0, 0.35);
   border-radius: var(--r-lg);
   padding: clamp(36px, 6vw, 64px);
   background:
-    radial-gradient(70% 140% at 85% 10%, rgba(200, 16, 46, 0.22), transparent 60%),
+    radial-gradient(70% 140% at 85% 10%, rgba(201, 0, 0, 0.22), transparent 60%),
     linear-gradient(160deg, var(--surface-2), var(--surface-0));
   overflow: hidden;
   text-align: center;
@@ -899,7 +902,7 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   background:
-    radial-gradient(70% 90% at 50% 100%, rgba(200, 16, 46, 0.14), transparent 65%),
+    radial-gradient(70% 90% at 50% 100%, rgba(201, 0, 0, 0.14), transparent 65%),
     linear-gradient(160deg, var(--surface-1), var(--surface-0));
   padding: clamp(20px, 4vw, 48px);
 }
@@ -1001,7 +1004,7 @@ a:hover {
 
 .person:hover {
   transform: translateY(-4px);
-  border-color: rgba(200, 16, 46, 0.4);
+  border-color: rgba(201, 0, 0, 0.4);
   box-shadow: var(--shadow-glow);
 }
 
@@ -1089,7 +1092,7 @@ a:hover {
 }
 
 .tier--featured {
-  border-color: rgba(200, 16, 46, 0.5);
+  border-color: rgba(201, 0, 0, 0.5);
   box-shadow: var(--shadow-glow);
 }
 
@@ -1157,8 +1160,8 @@ a:hover {
   height: 16px;
   margin-top: 4px;
   border-radius: 50%;
-  background: rgba(200, 16, 46, 0.18);
-  border: 1px solid rgba(200, 16, 46, 0.5);
+  background: rgba(201, 0, 0, 0.18);
+  border: 1px solid rgba(201, 0, 0, 0.5);
 }
 
 .logo-wall {
@@ -1185,7 +1188,7 @@ a:hover {
 }
 
 .logo-wall a:hover {
-  border-color: rgba(200, 16, 46, 0.5);
+  border-color: rgba(201, 0, 0, 0.5);
   background: var(--surface-2);
   color: var(--text);
 }
@@ -1215,7 +1218,7 @@ a:hover {
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
-  color: rgba(200, 16, 46, 0.85);
+  color: rgba(201, 0, 0, 0.85);
 }
 
 .step h3 {
@@ -1426,7 +1429,7 @@ a:hover {
 .socials a:hover {
   color: #fff;
   border-color: var(--scarlet);
-  background: rgba(200, 16, 46, 0.12);
+  background: rgba(201, 0, 0, 0.12);
 }
 
 .socials svg {
@@ -1590,7 +1593,7 @@ a:hover {
 
 @media print {
   .site-header,
-  .descent,
+  .launch,
   .hero__stars,
   .hero__scroll,
   .site-footer .socials {
@@ -1603,21 +1606,25 @@ a:hover {
   }
 }
 
-/* 14. Descent indicator ----------------------------------------------------
-   A lander riding a rail down the left margin as you scroll, nose up with
-   its retro-thrust firing downward — the attitude a real Mars lander holds
-   on the way to the surface. Reaching the end of the page lands it.
+/* 14. Launch indicator ----------------------------------------------------
+   A rocket sits on a pad at the foot of the left margin and climbs as you
+   scroll: engines cold at the top of the page, ignition on the first scroll,
+   exhaust column trailing back down to the pad, orbit marker lit when you
+   reach the end.
+
+   The dots on the rail are the page's sections, ordered the way the rocket
+   flies them — the first section is the one nearest the pad.
 
    Wide screens only: below 1240px there is no free margin to put it in
    without crowding the content, so it simply isn't shown. It is injected by
    main.js, so there is nothing for a no-JS visitor to miss.               */
 
-.descent {
+.launch {
   display: none;
 }
 
 @media (min-width: 1240px) {
-  .descent {
+  .launch {
     display: block;
     position: fixed;
     left: max(20px, calc((100vw - var(--container)) / 2 - 54px));
@@ -1628,12 +1635,12 @@ a:hover {
     pointer-events: none;
   }
 
-  .descent.is-idle {
+  .launch.is-idle {
     display: none;
   }
 }
 
-.descent__rail {
+.launch__rail {
   position: absolute;
   left: 15px;
   top: 0;
@@ -1644,34 +1651,52 @@ a:hover {
   overflow: hidden;
 }
 
-/* The path already flown. */
-.descent__trail {
+/* The exhaust column: brightest at the engine, fading back to the pad. */
+.launch__trail {
   position: absolute;
   left: 0;
-  top: 0;
+  bottom: 0;
   width: 100%;
   height: 0;
-  background: linear-gradient(to bottom, rgba(200, 16, 46, 0), var(--scarlet));
+  background: linear-gradient(to top, rgba(201, 0, 0, 0), var(--scarlet));
 }
 
-/* The surface it is descending toward. */
-.descent__surface {
+/* The pad it lifts off from. */
+.launch__pad {
   position: absolute;
-  left: 1px;
-  bottom: -7px;
-  width: 30px;
-  height: 12px;
-  border-top: 2px solid var(--border-strong);
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  left: 3px;
+  bottom: -5px;
+  width: 26px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--border-strong);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.launch.is-grounded .launch__pad {
+  background: var(--scarlet);
+  box-shadow: 0 0 18px -2px var(--scarlet-glow);
+}
+
+/* Orbit — the target above the top of the rail. Sits high enough to stay
+   clear of the rocket's nose when it completes the climb. */
+.launch__orbit {
+  position: absolute;
+  left: 9px;
+  top: -54px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.descent.is-landed .descent__surface {
-  border-top-color: var(--scarlet);
-  box-shadow: 0 -10px 24px -8px var(--scarlet-glow);
+.launch.is-orbit .launch__orbit {
+  border-color: var(--scarlet);
+  box-shadow: 0 0 22px -2px var(--scarlet-glow);
 }
 
-.descent__craft {
+.launch__craft {
   position: absolute;
   left: 0;
   top: 0;
@@ -1679,13 +1704,13 @@ a:hover {
   will-change: transform;
 }
 
-.descent__craft svg {
+.launch__craft svg {
   width: 32px;
   height: 52px;
   overflow: visible;
 }
 
-.descent__plume {
+.launch__plume {
   transform-origin: 16px 34px;
   animation: plume 0.16s steps(2) infinite alternate;
 }
@@ -1695,15 +1720,15 @@ a:hover {
   to { transform: scaleY(1.06); opacity: 1; }
 }
 
-/* Engines cut on touchdown. */
-.descent.is-landed .descent__plume,
-.descent.is-landed .descent__thrust {
+/* Engines are cold until you start scrolling. */
+.launch.is-grounded .launch__plume,
+.launch.is-grounded .launch__thrust {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 /* Section markers — decoration that also navigates. */
-.descent__dot {
+.launch__dot {
   position: absolute;
   left: 11px;
   width: 10px;
@@ -1716,18 +1741,18 @@ a:hover {
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.18s ease;
 }
 
-.descent__dot:hover,
-.descent__dot:focus-visible {
+.launch__dot:hover,
+.launch__dot:focus-visible {
   border-color: var(--scarlet);
   transform: scale(1.35);
 }
 
-.descent__dot.is-passed {
+.launch__dot.is-passed {
   background: var(--scarlet);
   border-color: var(--scarlet);
 }
 
-.descent__dot::after {
+.launch__dot::after {
   content: attr(data-label);
   position: absolute;
   left: 22px;
@@ -1749,8 +1774,8 @@ a:hover {
   transition: opacity 0.18s ease;
 }
 
-.descent__dot:hover::after,
-.descent__dot:focus-visible::after {
+.launch__dot:hover::after,
+.launch__dot:focus-visible::after {
   opacity: 1;
 }
 

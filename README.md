@@ -131,7 +131,7 @@ needs its colours updated by hand — it's the one file that doesn't follow `sty
 Everything comes from custom properties at the top of `assets/css/style.css`:
 
 ```css
---scarlet: #c8102e;   /* UH scarlet red — the official value */
+--scarlet: #c90000;   /* the site's red (UH's official scarlet is #C8102E) */
 --black:   #08090b;
 --surface-1: #121318;
 ```
@@ -159,10 +159,11 @@ link; keep that when you copy.)
   pushed) and `LINK` (how close two lit stars must be to be joined). It only paints while
   the hero is on screen in a visible tab, and the cursor interaction is skipped on touch
   devices.
-- A lander rides a rail down the left margin as you scroll — nose up with its retro-thrust
-  firing downward, the attitude a real Mars lander holds on the way to the surface. Scroll
-  to the bottom of a page and it touches down. The dots on the rail are that page's
-  sections: they light as you pass them and jump to them when clicked.
+- A rocket sits on a pad at the foot of the left margin and climbs as you scroll: engines
+  cold at the top of the page, ignition on the first scroll, an exhaust column trailing
+  back down to the pad, and the orbit marker lit when you reach the end. The dots on the
+  rail are that page's sections, ordered the way the rocket flies them — the first section
+  is the one nearest the pad — and they jump to their section when clicked.
   - Each dot's label comes from `data-nav` on the `<section>`. Add a section with an `id`
     and it gets a dot automatically; give it a `data-nav="Short label"` to name it.
   - Shown only at 1240px and wider, where there is free margin to put it in. Below that it

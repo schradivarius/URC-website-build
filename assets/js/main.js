@@ -280,7 +280,7 @@
         var alpha = Math.min(s.a + glow * 0.7, 1);
 
         ctx.fillStyle = s.scarlet
-          ? "rgba(236, 39, 67, " + alpha.toFixed(3) + ")"
+          ? "rgba(239, 20, 20, " + alpha.toFixed(3) + ")"
           : "rgba(255, 255, 255, " + alpha.toFixed(3) + ")";
         ctx.beginPath();
         ctx.arc(x, y, s.r + glow * 0.9, 0, Math.PI * 2);
@@ -298,7 +298,7 @@
       ctx.lineWidth = 1;
 
       for (var a = 0; a < litX.length; a++) {
-        ctx.strokeStyle = "rgba(236, 39, 67, " + (litG[a] * 0.45).toFixed(3) + ")";
+        ctx.strokeStyle = "rgba(239, 20, 20, " + (litG[a] * 0.45).toFixed(3) + ")";
         ctx.beginPath();
         ctx.moveTo(ptr.x, ptr.y);
         ctx.lineTo(litX[a], litY[a]);
@@ -388,48 +388,55 @@
     sync();
   }
 
-  /* --- Descent indicator --------------------------------------------------
-     A lander rides a rail down the left margin as you scroll: nose up, with
-     its retro-thrust firing downward, which is the attitude a real Mars
-     lander holds on the way to the surface. Scroll to the end of the page
-     and it touches down.
+  /* --- Launch indicator ---------------------------------------------------
+     A rocket sits on a pad at the foot of the left margin and climbs as you
+     scroll. Engines are cold at the top of the page, ignite on the first
+     scroll, and trail an exhaust column back down to the pad; reaching the
+     end of the page lights the orbit marker at the top of the rail.
 
-     The dots are the page's sections — they light as you pass them and jump
-     to them when clicked, so the thing navigates as well as decorates.
+     The dots are the page's sections, ordered the way the rocket flies them
+     — first section nearest the pad — so they light in the order you read.
+     They jump to their section when clicked, so the rail navigates as well
+     as decorates.
 
      Built here rather than in the markup: it needs JS to mean anything, so
      a no-JS visitor misses nothing, and the five pages stay free of another
      duplicated block to keep in sync.                                      */
 
   if (document.querySelector("main")) {
-    var descent = document.createElement("descent");
-    descent.className = "descent";
-    descent.setAttribute("aria-label", "Page sections");
-    descent.innerHTML =
-      '<div class="descent__rail"><span class="descent__trail"></span></div>' +
-      '<div class="descent__surface"></div>' +
-      '<div class="descent__craft">' +
+    var launch = document.createElement("nav");
+    launch.className = "launch is-grounded";
+    launch.setAttribute("aria-label", "Page sections");
+    launch.innerHTML =
+      '<div class="launch__rail"><span class="launch__trail"></span></div>' +
+      '<div class="launch__pad"></div>' +
+      '<div class="launch__orbit"></div>' +
+      '<div class="launch__craft">' +
       '<svg viewBox="0 0 32 52" aria-hidden="true" focusable="false">' +
       '<defs><linearGradient id="plumeGrad" x1="0" y1="0" x2="0" y2="1">' +
       '<stop offset="0" stop-color="#ffd9a8"/>' +
-      '<stop offset=".4" stop-color="#ec2743"/>' +
-      '<stop offset="1" stop-color="#c8102e" stop-opacity="0"/>' +
+      '<stop offset=".4" stop-color="#ef1414"/>' +
+      '<stop offset="1" stop-color="#c90000" stop-opacity="0"/>' +
       "</linearGradient></defs>" +
-      '<g class="descent__thrust">' +
-      '<path class="descent__plume" d="M16 33.5C19.5 39 18.6 45 16 51c-2.6-6-3.5-12 0-17.5z" fill="url(#plumeGrad)"/>' +
+      '<g class="launch__thrust">' +
+      '<path class="launch__plume" d="M16 33.5C19.5 39 18.6 45 16 51c-2.6-6-3.5-12 0-17.5z" fill="url(#plumeGrad)"/>' +
       "</g>" +
-      '<path d="M9.4 22.5L4.6 31.2 9.4 29.2z" fill="#c8102e"/>' +
-      '<path d="M22.6 22.5l4.8 8.7-4.8-2z" fill="#c8102e"/>' +
+      '<path d="M9.4 22.5L4.6 31.2 9.4 29.2z" fill="#c90000"/>' +
+      '<path d="M22.6 22.5l4.8 8.7-4.8-2z" fill="#c90000"/>' +
       '<path d="M16 2c4.4 6.2 6.6 13.4 6.6 21.2v6.4H9.4v-6.4C9.4 15.4 11.6 8.2 16 2z" fill="#e9eaee" stroke="#2a2e37" stroke-width="1.2"/>' +
       '<rect x="10.6" y="29.2" width="10.8" height="4.4" rx="1.6" fill="#3b414d"/>' +
-      '<circle cx="16" cy="16" r="3.4" fill="#0c0d10" stroke="#c8102e" stroke-width="1.6"/>' +
+      '<circle cx="16" cy="16" r="3.4" fill="#0c0d10" stroke="#c90000" stroke-width="1.6"/>' +
       "</svg></div>";
-    document.body.appendChild(descent);
+    document.body.appendChild(launch);
 
-    var rail = descent.querySelector(".descent__rail");
-    var trail = descent.querySelector(".descent__trail");
-    var craft = descent.querySelector(".descent__craft");
-    var thrust = descent.querySelector(".descent__thrust");
+    var rail = launch.querySelector(".launch__rail");
+    var trail = launch.querySelector(".launch__trail");
+    var craft = launch.querySelector(".launch__craft");
+    var thrust = launch.querySelector(".launch__thrust");
+
+    // Distance from the craft box's top edge to its engine bell, so the
+    // rocket can be parked with its engine exactly on the pad.
+    var ENGINE = 34;
 
     var marks = [];
 
@@ -447,7 +454,7 @@
         if (label.length > 26) label = label.slice(0, 25).trim() + "\u2026";
 
         var dot = document.createElement("a");
-        dot.className = "descent__dot";
+        dot.className = "launch__dot";
         dot.href = "#" + section.id;
         dot.setAttribute("data-label", label);
 
@@ -456,7 +463,7 @@
         name.textContent = label;
         dot.appendChild(name);
 
-        descent.appendChild(dot);
+        launch.appendChild(dot);
         marks.push({ dot: dot, section: section, top: 0 });
       }
     );
@@ -471,14 +478,17 @@
     function measure() {
       span = document.documentElement.scrollHeight - window.innerHeight;
       if (span < 240) {
-        descent.classList.add("is-idle");
+        launch.classList.add("is-idle");
         return;
       }
-      descent.classList.remove("is-idle");
+      launch.classList.remove("is-idle");
 
       for (var i = 0; i < marks.length; i++) {
         marks[i].top = marks[i].section.getBoundingClientRect().top + window.scrollY;
-        marks[i].dot.style.top = ((Math.min(marks[i].top / span, 1)) * 100).toFixed(2) + "%";
+        // Measured from the pad up: the rocket climbs past them in the order
+        // the page is read.
+        var frac = Math.min(marks[i].top / span, 1);
+        marks[i].dot.style.top = ((1 - frac) * 100).toFixed(2) + "%";
       }
     }
 
@@ -492,8 +502,9 @@
       var p = Math.min(Math.max(y / span, 0), 1);
 
       trail.style.height = (p * 100).toFixed(2) + "%";
-      craft.style.transform = "translate3d(0," + (p * h - 18).toFixed(1) + "px,0)";
-      descent.classList.toggle("is-landed", p > 0.995);
+      craft.style.transform = "translate3d(0," + ((1 - p) * h - ENGINE).toFixed(1) + "px,0)";
+      launch.classList.toggle("is-grounded", p < 0.005);
+      launch.classList.toggle("is-orbit", p > 0.995);
 
       // The plume flares when you scroll hard and settles when you stop.
       flare += (Math.min(Math.abs(y - lastY) / 55, 1) - flare) * 0.25;
