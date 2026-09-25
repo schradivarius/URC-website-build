@@ -41,9 +41,11 @@ rover.html        The rover — specs, subsystem write-ups, testing
 team.html         Leadership cards and the five subteams
 sponsors.html     Why sponsor, tiers, in-kind, budget split, logo wall
 join.html         Why join, open roles, process, FAQ, contact form
+404.html          Shown for any URL that doesn't exist (styles inlined, see below)
 assets/css/style.css   All styling. Colours live in the :root block at the top.
 assets/js/main.js      Nav drawer, reveals, counters, starfield, descent rail
-assets/img/            Logo, favicon, rover illustration, portrait placeholder
+assets/img/            Logo, favicon, rover illustration, portrait placeholder, social card
+assets/fonts/          Self-hosted Inter and Space Grotesk (no CDN)
 ```
 
 ---
@@ -92,6 +94,38 @@ The form in `join.html` posts to a placeholder endpoint. Pick one:
 
 Until one of those is done, the `mailto:` link under the form is the working path.
 
+### Fonts
+
+Inter and Space Grotesk are **self-hosted** in `assets/fonts/` — the site makes no
+third-party requests at all, so it renders identically on a locked-down campus network and
+loading type doesn't tell anyone else who's reading the page.
+
+Both are variable fonts, so one file covers every weight. The `latin-ext` files are only
+fetched if a visitor hits a character in that range, which means English pages download
+about 70 KB of type total.
+
+Both are licensed under the SIL Open Font License 1.1, which permits redistribution like
+this. To refresh them, download the `latin` and `latin-ext` woff2 files from Google Fonts
+for Inter (400–600) and Space Grotesk (500–700), drop them in `assets/fonts/`, and update
+the `src` lines in `fonts.css`.
+
+### Social preview card
+
+`assets/img/social-card.png` (1200×630) is what shows when someone shares a link to the
+site. It's a screenshot of a small HTML card, so re-making it after a rebrand is easy:
+build a 1200×630 page with the new artwork and screenshot it at that exact size.
+
+Once the site has a real domain, make the `og:image` in each page's `<head>` an **absolute**
+URL (`https://yourdomain/assets/img/social-card.png`) — some scrapers won't resolve a
+relative one.
+
+### The 404 page
+
+`404.html` is served automatically by GitHub Pages for any URL that doesn't exist. Its
+styles are **inlined on purpose**: a 404 can be served at any path depth, and a stylesheet
+referenced relatively would 404 too, leaving an unstyled page. If you restyle the site, it
+needs its colours updated by hand — it's the one file that doesn't follow `style.css`.
+
 ### Changing the colours
 
 Everything comes from custom properties at the top of `assets/css/style.css`:
@@ -134,6 +168,7 @@ link; keep that when you copy.)
   - Shown only at 1240px and wider, where there is free margin to put it in. Below that it
     is not rendered at all, so it never crowds the content or the phone layout.
 - Works with JavaScript disabled; JS only adds the mobile drawer, reveals and counters.
+- Makes zero third-party requests — no CDN, no font service, no analytics, no trackers.
 - The rover illustration in `assets/img/rover.svg` is a stand-in. Replace it with a CAD
   render or a photo of the real machine when you have one — that single swap does more for
   the site than any other change.
