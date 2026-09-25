@@ -388,6 +388,151 @@
     sync();
   }
 
+  /* --- Descent indicator --------------------------------------------------
+     A lander rides a rail down the left margin as you scroll: nose up, with
+     its retro-thrust firing downward, which is the attitude a real Mars
+     lander holds on the way to the surface. Scroll to the end of the page
+     and it touches down.
+
+     The dots are the page's sections — they light as you pass them and jump
+     to them when clicked, so the thing navigates as well as decorates.
+
+     Built here rather than in the markup: it needs JS to mean anything, so
+     a no-JS visitor misses nothing, and the five pages stay free of another
+     duplicated block to keep in sync.                                      */
+
+  if (document.querySelector("main")) {
+    var descent = document.createElement("descent");
+    descent.className = "descent";
+    descent.setAttribute("aria-label", "Page sections");
+    descent.innerHTML =
+      '<div class="descent__rail"><span class="descent__trail"></span></div>' +
+      '<div class="descent__surface"></div>' +
+      '<div class="descent__craft">' +
+      '<svg viewBox="0 0 32 52" aria-hidden="true" focusable="false">' +
+      '<defs><linearGradient id="plumeGrad" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0" stop-color="#ffd9a8"/>' +
+      '<stop offset=".4" stop-color="#ec2743"/>' +
+      '<stop offset="1" stop-color="#c8102e" stop-opacity="0"/>' +
+      "</linearGradient></defs>" +
+      '<g class="descent__thrust">' +
+      '<path class="descent__plume" d="M16 33.5C19.5 39 18.6 45 16 51c-2.6-6-3.5-12 0-17.5z" fill="url(#plumeGrad)"/>' +
+      "</g>" +
+      '<path d="M9.4 22.5L4.6 31.2 9.4 29.2z" fill="#c8102e"/>' +
+      '<path d="M22.6 22.5l4.8 8.7-4.8-2z" fill="#c8102e"/>' +
+      '<path d="M16 2c4.4 6.2 6.6 13.4 6.6 21.2v6.4H9.4v-6.4C9.4 15.4 11.6 8.2 16 2z" fill="#e9eaee" stroke="#2a2e37" stroke-width="1.2"/>' +
+      '<rect x="10.6" y="29.2" width="10.8" height="4.4" rx="1.6" fill="#3b414d"/>' +
+      '<circle cx="16" cy="16" r="3.4" fill="#0c0d10" stroke="#c8102e" stroke-width="1.6"/>' +
+      "</svg></div>";
+    document.body.appendChild(descent);
+
+    var rail = descent.querySelector(".descent__rail");
+    var trail = descent.querySelector(".descent__trail");
+    var craft = descent.querySelector(".descent__craft");
+    var thrust = descent.querySelector(".descent__thrust");
+
+    var marks = [];
+
+    Array.prototype.forEach.call(
+      document.querySelectorAll("main section[id]"),
+      function (section) {
+        // EDIT: a section's rail label comes from its data-nav attribute.
+        // Falling back to the kicker, then the heading, then the id, so a
+        // section added later still gets a sensible marker for free.
+        var source = section.querySelector(".eyebrow") || section.querySelector("h2, h3");
+        var label = (
+          section.getAttribute("data-nav") ||
+          (source ? source.textContent : section.id)
+        ).replace(/\s+/g, " ").trim();
+        if (label.length > 26) label = label.slice(0, 25).trim() + "\u2026";
+
+        var dot = document.createElement("a");
+        dot.className = "descent__dot";
+        dot.href = "#" + section.id;
+        dot.setAttribute("data-label", label);
+
+        var name = document.createElement("span");
+        name.className = "vh";
+        name.textContent = label;
+        dot.appendChild(name);
+
+        descent.appendChild(dot);
+        marks.push({ dot: dot, section: section, top: 0 });
+      }
+    );
+
+    var span = 0; // scrollable distance
+    var lastY = window.scrollY;
+    var flare = 0;
+    var ticking = false;
+
+    // Reading layout is the expensive half, so it happens on resize and load
+    // rather than on every scroll frame.
+    function measure() {
+      span = document.documentElement.scrollHeight - window.innerHeight;
+      if (span < 240) {
+        descent.classList.add("is-idle");
+        return;
+      }
+      descent.classList.remove("is-idle");
+
+      for (var i = 0; i < marks.length; i++) {
+        marks[i].top = marks[i].section.getBoundingClientRect().top + window.scrollY;
+        marks[i].dot.style.top = ((Math.min(marks[i].top / span, 1)) * 100).toFixed(2) + "%";
+      }
+    }
+
+    function update() {
+      ticking = false;
+
+      var h = rail.clientHeight;
+      if (!h || span < 240) return; // hidden at this width, or nothing to scroll
+
+      var y = window.scrollY;
+      var p = Math.min(Math.max(y / span, 0), 1);
+
+      trail.style.height = (p * 100).toFixed(2) + "%";
+      craft.style.transform = "translate3d(0," + (p * h - 18).toFixed(1) + "px,0)";
+      descent.classList.toggle("is-landed", p > 0.995);
+
+      // The plume flares when you scroll hard and settles when you stop.
+      flare += (Math.min(Math.abs(y - lastY) / 55, 1) - flare) * 0.25;
+      lastY = y;
+      thrust.setAttribute(
+        "transform",
+        "translate(16 34) scale(1," + (0.7 + flare).toFixed(2) + ") translate(-16 -34)"
+      );
+
+      for (var i = 0; i < marks.length; i++) {
+        marks[i].dot.classList.toggle("is-passed", y + 2 >= marks[i].top);
+      }
+    }
+
+    function queue() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    var remeasure;
+    window.addEventListener("resize", function () {
+      clearTimeout(remeasure);
+      remeasure = setTimeout(function () {
+        measure();
+        update();
+      }, 150);
+    });
+
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("load", function () {
+      measure();
+      update();
+    });
+
+    measure();
+    update();
+  }
+
   /* --- Footer year ------------------------------------------------------- */
 
   document.querySelectorAll("[data-year]").forEach(function (el) {

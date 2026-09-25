@@ -1590,6 +1590,7 @@ a:hover {
 
 @media print {
   .site-header,
+  .descent,
   .hero__stars,
   .hero__scroll,
   .site-footer .socials {
@@ -1600,4 +1601,168 @@ a:hover {
     background: #fff;
     color: #000;
   }
+}
+
+/* 14. Descent indicator ----------------------------------------------------
+   A lander riding a rail down the left margin as you scroll, nose up with
+   its retro-thrust firing downward — the attitude a real Mars lander holds
+   on the way to the surface. Reaching the end of the page lands it.
+
+   Wide screens only: below 1240px there is no free margin to put it in
+   without crowding the content, so it simply isn't shown. It is injected by
+   main.js, so there is nothing for a no-JS visitor to miss.               */
+
+.descent {
+  display: none;
+}
+
+@media (min-width: 1240px) {
+  .descent {
+    display: block;
+    position: fixed;
+    left: max(20px, calc((100vw - var(--container)) / 2 - 54px));
+    top: calc(var(--header-h) + 12vh);
+    height: calc(100svh - var(--header-h) - 24vh);
+    width: 32px;
+    z-index: 40;
+    pointer-events: none;
+  }
+
+  .descent.is-idle {
+    display: none;
+  }
+}
+
+.descent__rail {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+/* The path already flown. */
+.descent__trail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(to bottom, rgba(200, 16, 46, 0), var(--scarlet));
+}
+
+/* The surface it is descending toward. */
+.descent__surface {
+  position: absolute;
+  left: 1px;
+  bottom: -7px;
+  width: 30px;
+  height: 12px;
+  border-top: 2px solid var(--border-strong);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.descent.is-landed .descent__surface {
+  border-top-color: var(--scarlet);
+  box-shadow: 0 -10px 24px -8px var(--scarlet-glow);
+}
+
+.descent__craft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  will-change: transform;
+}
+
+.descent__craft svg {
+  width: 32px;
+  height: 52px;
+  overflow: visible;
+}
+
+.descent__plume {
+  transform-origin: 16px 34px;
+  animation: plume 0.16s steps(2) infinite alternate;
+}
+
+@keyframes plume {
+  from { transform: scaleY(0.72); opacity: 0.75; }
+  to { transform: scaleY(1.06); opacity: 1; }
+}
+
+/* Engines cut on touchdown. */
+.descent.is-landed .descent__plume,
+.descent.is-landed .descent__thrust {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Section markers — decoration that also navigates. */
+.descent__dot {
+  position: absolute;
+  left: 11px;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--surface-0);
+  border: 1px solid var(--border-strong);
+  pointer-events: auto;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.18s ease;
+}
+
+.descent__dot:hover,
+.descent__dot:focus-visible {
+  border-color: var(--scarlet);
+  transform: scale(1.35);
+}
+
+.descent__dot.is-passed {
+  background: var(--scarlet);
+  border-color: var(--scarlet);
+}
+
+.descent__dot::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: #0e1015;
+  color: var(--text-dim);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.descent__dot:hover::after,
+.descent__dot:focus-visible::after {
+  opacity: 1;
+}
+
+/* Visually hidden, still read aloud. */
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }

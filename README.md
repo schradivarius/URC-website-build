@@ -42,7 +42,7 @@ team.html         Leadership cards and the five subteams
 sponsors.html     Why sponsor, tiers, in-kind, budget split, logo wall
 join.html         Why join, open roles, process, FAQ, contact form
 assets/css/style.css   All styling. Colours live in the :root block at the top.
-assets/js/main.js      Nav drawer, scroll reveals, stat counters, interactive starfield
+assets/js/main.js      Nav drawer, reveals, counters, starfield, descent rail
 assets/img/            Logo, favicon, rover illustration, portrait placeholder
 ```
 
@@ -62,6 +62,7 @@ Search the HTML for `EDIT:` — every placeholder is flagged with a comment. The
 | Roster and photos | `team.html` |
 | Sponsor tiers and amounts | `sponsors.html` |
 | Meeting time and lab room | `join.html` |
+| Left-rail section labels | The `data-nav` attribute on each `<section id="...">` |
 
 ### Adding a team member
 
@@ -124,6 +125,14 @@ link; keep that when you copy.)
   pushed) and `LINK` (how close two lit stars must be to be joined). It only paints while
   the hero is on screen in a visible tab, and the cursor interaction is skipped on touch
   devices.
+- A lander rides a rail down the left margin as you scroll — nose up with its retro-thrust
+  firing downward, the attitude a real Mars lander holds on the way to the surface. Scroll
+  to the bottom of a page and it touches down. The dots on the rail are that page's
+  sections: they light as you pass them and jump to them when clicked.
+  - Each dot's label comes from `data-nav` on the `<section>`. Add a section with an `id`
+    and it gets a dot automatically; give it a `data-nav="Short label"` to name it.
+  - Shown only at 1240px and wider, where there is free margin to put it in. Below that it
+    is not rendered at all, so it never crowds the content or the phone layout.
 - Works with JavaScript disabled; JS only adds the mobile drawer, reveals and counters.
 - The rover illustration in `assets/img/rover.svg` is a stand-in. Replace it with a CAD
   render or a photo of the real machine when you have one — that single swap does more for
