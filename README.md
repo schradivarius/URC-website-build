@@ -43,7 +43,7 @@ sponsors.html     Why sponsor, tiers, in-kind, budget split, logo wall
 join.html         Why join, open roles, process, FAQ, contact form
 404.html          Shown for any URL that doesn't exist (styles inlined, see below)
 assets/css/style.css   All styling. Colours live in the :root block at the top.
-assets/js/main.js      Nav drawer, reveals, counters, starfield, descent rail
+assets/js/main.js      Nav drawer, scroll reveals, stat counters, interactive starfield
 assets/img/            Logo, favicon, rover illustration, portrait placeholder, social card
 assets/fonts/          Self-hosted Inter and Space Grotesk (no CDN)
 ```
@@ -64,7 +64,6 @@ Search the HTML for `EDIT:` — every placeholder is flagged with a comment. The
 | Roster and photos | `team.html` |
 | Sponsor tiers and amounts | `sponsors.html` |
 | Meeting time and lab room | `join.html` |
-| Left-rail section labels | The `data-nav` attribute on each `<section id="...">` |
 
 ### Adding a team member
 
@@ -159,15 +158,6 @@ link; keep that when you copy.)
   pushed) and `LINK` (how close two lit stars must be to be joined). It only paints while
   the hero is on screen in a visible tab, and the cursor interaction is skipped on touch
   devices.
-- A rocket sits on a pad at the foot of the left margin and climbs as you scroll: engines
-  cold at the top of the page, ignition on the first scroll, an exhaust column trailing
-  back down to the pad, and the orbit marker lit when you reach the end. The dots on the
-  rail are that page's sections, ordered the way the rocket flies them — the first section
-  is the one nearest the pad — and they jump to their section when clicked.
-  - Each dot's label comes from `data-nav` on the `<section>`. Add a section with an `id`
-    and it gets a dot automatically; give it a `data-nav="Short label"` to name it.
-  - Shown only at 1240px and wider, where there is free margin to put it in. Below that it
-    is not rendered at all, so it never crowds the content or the phone layout.
 - Works with JavaScript disabled; JS only adds the mobile drawer, reveals and counters.
 - Makes zero third-party requests — no CDN, no font service, no analytics, no trackers.
 - The rover illustration in `assets/img/rover.svg` is a stand-in. Replace it with a CAD
