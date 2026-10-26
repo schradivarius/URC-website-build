@@ -2,6 +2,10 @@
 
 The website for the University of Houston's University Rover Challenge team.
 
+**The audience is sponsors.** Every page is written for someone deciding whether to back
+the team; students are recruited through other channels, so there is deliberately no
+"join us" page. Keep that in mind before adding anything.
+
 Plain HTML, CSS and JavaScript. **No build step, no npm, no framework.** Edit a file,
 commit it, and GitHub Pages publishes it. Anyone on the team can maintain this, including
 the officers who take over after we graduate.
@@ -38,7 +42,6 @@ file named `CNAME` in the repo root containing just that domain.
 ```
 index.html        Home — hero, mission, the four URC missions, sponsors
 sponsors.html     Our sponsors, why sponsor, tiers, in-kind support
-join.html         Why join, open roles, how to join, FAQ
 contact.html      Email, contact form, and who to write to about what
 404.html          Shown for any URL that doesn't exist (styles inlined, see below)
 assets/css/style.css   All styling. Colours live in the :root block at the top.
@@ -60,7 +63,6 @@ Search the HTML for `EDIT:` — every placeholder is flagged with a comment. The
 | Email address | `apollos@uh.edu` — find & replace across the pages |
 | Social links | The `.socials` block in every footer, and `contact.html` |
 | Sponsors and tier amounts | `sponsors.html` |
-| Meeting time and lab room | `join.html` |
 
 ### Adding a sponsor
 
@@ -75,7 +77,7 @@ sponsor" to "Our sponsors" when the second one arrives.
 
 ### Making the contact form actually send
 
-The form in `join.html` posts to a placeholder endpoint. Pick one:
+The form in `contact.html` posts to a placeholder endpoint. Pick one:
 
 - **Formspree** (easiest): create a form at [formspree.io](https://formspree.io), then
   replace `YOUR_FORM_ID` in the `action` attribute.
@@ -133,7 +135,7 @@ Change those three and the whole site follows.
 ## Notes on the header and footer
 
 There's no templating engine, so the `<header>` and `<footer>` blocks are duplicated in
-each page. If you add a nav link, add it to all four pages — they're marked with comment
+each page. If you add a nav link, add it to all three pages — they're marked with comment
 banners so they're easy to find. (Each page sets `aria-current="page"` on its own nav
 link; keep that when you copy.)
 
@@ -152,6 +154,6 @@ link; keep that when you copy.)
 - Works with JavaScript disabled; JS only adds the mobile drawer, reveals and counters.
 - Makes zero third-party requests — no CDN, no font service, no analytics, no trackers.
 - There is no rover page yet, by design — the site doesn't show a machine that doesn't
-  exist. When there is one to show, add a page for it and a nav link in all four pages.
+  exist. When there is one to show, add a page for it and a nav link in all three pages.
 
 _Ad astra._

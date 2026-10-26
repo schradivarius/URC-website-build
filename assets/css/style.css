@@ -10,7 +10,7 @@
    05. Hero
    06. Sections & cards
    07. Sponsors
-   08. Join & contact (steps, FAQ, form)
+   08. Contact (form, details)
    09. Footer
    10. Motion & responsive
    ========================================================================== */
@@ -952,94 +952,7 @@ a:hover {
   border: 1px solid rgba(201, 0, 0, 0.5);
 }
 
-/* 08. Join & contact ----------------------------------------------------------- */
-
-.steps {
-  counter-reset: step;
-  display: grid;
-  gap: 20px;
-}
-
-.step {
-  position: relative;
-  padding: 26px 28px 26px 84px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  background: var(--surface-0);
-}
-
-.step::before {
-  counter-increment: step;
-  content: counter(step, decimal-leading-zero);
-  position: absolute;
-  left: 28px;
-  top: 26px;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: rgba(201, 0, 0, 0.85);
-}
-
-.step h3 {
-  font-size: 1.1rem;
-  margin-bottom: 6px;
-}
-
-.step p {
-  color: var(--text-dim);
-  margin: 0;
-}
-
-.faq {
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  background: var(--surface-0);
-  margin-bottom: 12px;
-  overflow: hidden;
-}
-
-.faq summary {
-  padding: 20px 24px;
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-weight: 600;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  transition: color 0.18s ease;
-}
-
-.faq summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq summary:hover {
-  color: var(--scarlet-bright);
-}
-
-.faq summary::after {
-  content: "+";
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: var(--scarlet);
-  line-height: 1;
-  transition: transform 0.2s ease;
-}
-
-.faq[open] summary::after {
-  transform: rotate(45deg);
-}
-
-.faq__body {
-  padding: 0 24px 22px;
-  color: var(--text-dim);
-}
-
-.faq__body p:last-child {
-  margin-bottom: 0;
-}
+/* 08. Contact ------------------------------------------------------------- */
 
 .form {
   display: grid;
@@ -1314,15 +1227,6 @@ a:hover {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-
-  .step {
-    padding: 64px 22px 24px;
-  }
-
-  .step::before {
-    left: 22px;
-    top: 22px;
   }
 }
 
