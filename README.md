@@ -53,6 +53,23 @@ assets/fonts/          Self-hosted Inter and Space Grotesk (no CDN)
 
 ---
 
+## Competition facts
+
+The competition details on the site (mission names, dates, the down-select, the budget
+cap) were taken from **University Rover Challenge 2027 — Requirements and Guidelines**,
+published by The Mars Society. The rules change every year, sometimes substantially — the
+2027 Autonomy Mission is nothing like the waypoint course it replaced, and the Science
+Mission is now the Astrobiology Mission. **Re-check these against the current rule set
+each season** rather than carrying them forward:
+
+| On the site | Source |
+| --- | --- |
+| The four mission names and what each involves | Rules §1.b–1.e |
+| June 2–5, 2027, MDRS near Hanksville, Utah | Rules §3.a.iv |
+| Top 36 teams at the System Acceptance Review | Rules §3.a.iii |
+| $26,000 cap on fielded equipment | Rules §3.c.iii |
+| PDR 2 Dec 2026, SAR 5 Mar 2027 | Rules §3.a.ii–iii |
+
 ## Editing guide
 
 Search the HTML for `EDIT:` — every placeholder is flagged with a comment. The short list:
