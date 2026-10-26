@@ -428,10 +428,6 @@ a:hover {
   border-radius: 2px;
 }
 
-.header-cta {
-  margin-left: 8px;
-}
-
 .nav-toggle {
   display: none;
   width: 44px;
@@ -1176,14 +1172,6 @@ a:hover {
 
   .nav a[aria-current="page"] {
     color: var(--scarlet-bright);
-  }
-
-  .nav .btn {
-    margin-top: 16px;
-    padding: 15px 22px;
-    border-bottom: 0;
-    border-radius: 999px;
-    color: #fff;
   }
 
   .hero {
