@@ -70,6 +70,13 @@ each season** rather than carrying them forward:
 | $26,000 cap on fielded equipment | Rules §3.c.iii |
 | PDR 2 Dec 2026, SAR 5 Mar 2027 | Rules §3.a.ii–iii |
 
+## Voice
+
+Section headings are plain names — "About the Team", "Competition Missions",
+"Sponsorship", "Contact Us" — not slogans. There are deliberately no small kicker labels
+above headings; that pattern is what made an earlier draft read as generated rather than
+written. Keep the prose declarative, use American spelling, and resist the em-dash aside.
+
 ## Editing guide
 
 Search the HTML for `EDIT:` — every placeholder is flagged with a comment. The short list:

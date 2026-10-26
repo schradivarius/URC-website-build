@@ -203,35 +203,6 @@ a:hover {
   text-align: center;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--scarlet-bright);
-  margin-bottom: 18px;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 28px;
-  height: 2px;
-  background: var(--scarlet);
-  flex: none;
-}
-
-.section-head--center .eyebrow::after {
-  content: "";
-  width: 28px;
-  height: 2px;
-  background: var(--scarlet);
-  flex: none;
-}
-
 .lead {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   color: var(--text-dim);
