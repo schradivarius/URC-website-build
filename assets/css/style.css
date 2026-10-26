@@ -9,13 +9,10 @@
    04. Header / navigation
    05. Hero
    06. Sections & cards
-   07. Stats
-   08. Rover page (specs, subsystems, diagram)
-   09. Team page
-   10. Sponsors page
-   11. Join page (steps, FAQ, form)
-   12. Footer
-   13. Motion & responsive
+   07. Sponsors
+   08. Join & contact (steps, FAQ, form)
+   09. Footer
+   10. Motion & responsive
    ========================================================================== */
 
 /* 01. Tokens & reset ------------------------------------------------------ */
@@ -782,53 +779,6 @@ a:hover {
     radial-gradient(circle, var(--scarlet) 0 3px, transparent 4px);
 }
 
-/* Timeline */
-.timeline {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 28px;
-  border-left: 1px solid var(--border-strong);
-  display: grid;
-  gap: 34px;
-}
-
-.timeline li {
-  position: relative;
-}
-
-.timeline li::before {
-  content: "";
-  position: absolute;
-  left: -35px;
-  top: 6px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: var(--surface-0);
-  border: 2px solid var(--scarlet);
-}
-
-.timeline .when {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--scarlet-bright);
-  display: block;
-  margin-bottom: 6px;
-}
-
-.timeline h3 {
-  font-size: 1.15rem;
-  margin-bottom: 6px;
-}
-
-.timeline p {
-  color: var(--text-dim);
-  margin: 0;
-}
-
 /* Call-to-action banner */
 .cta-band {
   position: relative;
@@ -857,229 +807,67 @@ a:hover {
   margin-top: 28px;
 }
 
-/* 07. Stats --------------------------------------------------------------- */
+/* 07. Sponsors ------------------------------------------------------------ */
 
-.stats {
+/* One sponsor per row at full width, two up once there is room. Built to
+   look right with a single logo in it, since that is where every team
+   starts. */
+.sponsor-wall {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  overflow: hidden;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
 }
 
-.stat {
-  background: var(--surface-0);
-  padding: 30px 24px;
-  text-align: center;
-}
-
-.stat__value {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 700;
-  line-height: 1;
-  color: var(--text);
-  margin-bottom: 8px;
-}
-
-.stat__value .unit {
-  color: var(--scarlet-bright);
-}
-
-.stat__label {
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* 08. Rover page ---------------------------------------------------------- */
-
-.rover-figure {
-  position: relative;
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  background:
-    radial-gradient(70% 90% at 50% 100%, rgba(201, 0, 0, 0.14), transparent 65%),
-    linear-gradient(160deg, var(--surface-1), var(--surface-0));
-  padding: clamp(20px, 4vw, 48px);
-}
-
-.rover-figure figcaption {
-  margin-top: 18px;
-  text-align: center;
-  font-size: 0.88rem;
-  color: var(--muted);
-}
-
-.spec-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-
-.spec-table caption {
-  text-align: left;
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--muted);
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding-bottom: 14px;
-}
-
-.spec-table th,
-.spec-table td {
-  text-align: left;
-  padding: 14px 8px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-}
-
-.spec-table th {
-  font-weight: 500;
-  color: var(--muted);
-  width: 44%;
-}
-
-.spec-table td {
-  color: var(--text);
-  font-family: var(--font-display);
-  font-weight: 500;
-}
-
-.spec-table tr:last-child th,
-.spec-table tr:last-child td {
-  border-bottom: 0;
-}
-
-.subsystem {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: clamp(20px, 4vw, 48px);
-  padding: 36px 0;
-  border-top: 1px solid var(--border);
-}
-
-.subsystem:first-of-type {
-  border-top: 0;
-}
-
-.subsystem__label {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.subsystem__label .idx {
-  display: block;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  color: var(--scarlet);
-  margin-bottom: 6px;
-}
-
-.subsystem__body p {
-  color: var(--text-dim);
-}
-
-.subsystem__body p:last-of-type {
-  margin-bottom: 14px;
-}
-
-/* 09. Team page ----------------------------------------------------------- */
-
-.person {
-  text-align: left;
-  padding: 0;
+.sponsor {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 32px;
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   background: linear-gradient(160deg, var(--surface-1), var(--surface-0));
-  overflow: hidden;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.person:hover {
-  transform: translateY(-4px);
+.sponsor:hover {
   border-color: rgba(201, 0, 0, 0.4);
   box-shadow: var(--shadow-glow);
 }
 
-.person__photo {
-  aspect-ratio: 1 / 1;
-  width: 100%;
-  object-fit: cover;
-  background: var(--surface-3);
-  border-bottom: 1px solid var(--border);
-}
-
-.person__body {
-  padding: 20px 22px 24px;
-}
-
-.person__name {
-  font-family: var(--font-display);
-  font-size: 1.08rem;
-  font-weight: 700;
-  margin: 0 0 4px;
-}
-
-.person__role {
-  font-size: 0.85rem;
-  color: var(--scarlet-bright);
-  margin: 0 0 8px;
-}
-
-.person__meta {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin: 0;
-}
-
-.subteam {
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  background: var(--surface-0);
-}
-
-.subteam h3 {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
-}
-
-.subteam h3 .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--scarlet);
+/* Logos keep their own colours; the panel just gives them breathing room. */
+.sponsor__logo {
   flex: none;
+  display: grid;
+  place-items: center;
+  width: 168px;
+  padding: 10px;
 }
 
-.roster {
-  list-style: none;
-  margin: 18px 0 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.sponsor__logo img {
+  width: 100%;
+  height: auto;
 }
 
-.roster li {
-  padding: 5px 12px;
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  background: var(--surface-2);
-  font-size: 0.84rem;
-  color: var(--text-dim);
+.sponsor__body h3 {
+  margin: 10px 0 10px;
 }
 
-/* 10. Sponsors page ------------------------------------------------------- */
+.sponsor__body p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 560px) {
+  .sponsor {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .sponsor__logo {
+    width: 150px;
+    padding-left: 0;
+  }
+}
 
 .tier {
   position: relative;
@@ -1164,36 +952,7 @@ a:hover {
   border: 1px solid rgba(201, 0, 0, 0.5);
 }
 
-.logo-wall {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
-}
-
-.logo-wall a,
-.logo-wall div {
-  display: grid;
-  place-items: center;
-  min-height: 110px;
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  background: var(--surface-1);
-  color: var(--text-dim);
-  font-family: var(--font-display);
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-.logo-wall a:hover {
-  border-color: rgba(201, 0, 0, 0.5);
-  background: var(--surface-2);
-  color: var(--text);
-}
-
-/* 11. Join page ----------------------------------------------------------- */
+/* 08. Join & contact ----------------------------------------------------------- */
 
 .steps {
   counter-reset: step;
@@ -1357,7 +1116,7 @@ a:hover {
   font-size: 1.05rem;
 }
 
-/* 12. Footer -------------------------------------------------------------- */
+/* 09. Footer -------------------------------------------------------------- */
 
 .site-footer {
   position: relative;
@@ -1454,7 +1213,7 @@ a:hover {
   color: var(--scarlet);
 }
 
-/* 13. Motion & responsive -------------------------------------------------- */
+/* 10. Motion & responsive -------------------------------------------------- */
 
 .reveal {
   opacity: 0;
@@ -1479,11 +1238,6 @@ a:hover {
 
   .footer-about {
     grid-column: 1 / -1;
-  }
-
-  .subsystem {
-    grid-template-columns: 1fr;
-    gap: 14px;
   }
 }
 

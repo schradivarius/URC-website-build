@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Houston Apollos</title>
+<meta name="description" content="Get in touch with the Houston Apollos, the University of Houston Mars rover team — for students, sponsors and outreach.">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+<!-- Social preview. EDIT: make og:image absolute once you have a domain. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Houston Apollos">
+<meta property="og:title" content="Houston Apollos — University of Houston Mars rover team">
+<meta property="og:description" content="Get in touch with the Houston Apollos, the University of Houston Mars rover team — for students, sponsors and outreach.">
+<meta property="og:image" content="assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ HEADER (keep this block in sync across all pages) ============ -->
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+      <span class="brand__text">
+        <span class="brand__name">Houston Apollos</span>
+        <span class="brand__sub">University of Houston</span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="sponsors.html">Sponsors</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a class="btn btn--sm header-cta" href="join.html">Join Us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>Get in touch</h1>
+      <p class="lead">
+        Questions about joining, sponsoring, or bringing the team to your school event?
+        One message reaches the whole officer team.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="reveal">
+          <p class="eyebrow">Reach us</p>
+          <h2>Where to send it</h2>
+          <p class="lead">
+            Email is the fastest route, and it reaches every officer rather than one
+            person's inbox.
+          </p>
+
+          <!-- EDIT: real email address, campus location and social handles. -->
+          <dl class="contact-list" style="margin-top:32px">
+            <div>
+              <dt class="label">Email</dt>
+              <dd class="value" style="margin:0"><a href="mailto:apollos@uh.edu">apollos@uh.edu</a></dd>
+            </div>
+            <div>
+              <dt class="label">Find us on campus</dt>
+              <dd class="value" style="margin:0">Engineering Building &mdash; room TBD</dd>
+            </div>
+            <div>
+              <dt class="label">University</dt>
+              <dd class="value" style="margin:0">
+                <a href="https://www.uh.edu/" rel="noopener">University of Houston</a>
+              </dd>
+            </div>
+            <div>
+              <dt class="label">Social</dt>
+              <dd class="value" style="margin:0">
+                <a href="#">Instagram</a> &middot; <a href="#">LinkedIn</a> &middot; <a href="#">GitHub</a>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="split__media reveal" data-delay="1">
+          <!--
+            EDIT: this form needs a backend to actually send mail. Two easy options:
+              1. Formspree — create a form at formspree.io and paste your endpoint in `action`.
+              2. Google Forms — delete this <form> and embed your form's iframe instead.
+            Until then the email address above is the working path.
+          -->
+          <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="post">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="topic">I am reaching out about</label>
+              <select id="topic" name="topic">
+                <option>Joining the team</option>
+                <option>Sponsorship</option>
+                <option>Outreach or a demo</option>
+                <option>Press</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us a bit about yourself." required></textarea>
+            </div>
+            <button class="btn" type="submit">Send message</button>
+            <p class="form__note">
+              Prefer email? Write to
+              <a href="mailto:apollos@uh.edu">apollos@uh.edu</a> &mdash; we read everything.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROUTES ============ -->
+  <section class="section section--alt" id="routes">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Who is writing</p>
+        <h2>Point us in the right direction</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="card reveal">
+          <h3>Students</h3>
+          <p class="muted">
+            Want to join, or just want to see what we are building? Come to a meeting
+            &mdash; details are on the Join page.
+          </p>
+          <p style="margin:18px 0 0"><a class="arrow-link" href="join.html">How to join
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></p>
+        </article>
+        <article class="card reveal" data-delay="1">
+          <h3>Sponsors</h3>
+          <p class="muted">
+            Cash, materials, machining time or mentorship &mdash; tell us what your company
+            cares about and we will build a package around it.
+          </p>
+          <p style="margin:18px 0 0"><a class="arrow-link" href="sponsors.html">Sponsorship details
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></p>
+        </article>
+        <article class="card reveal" data-delay="2">
+          <h3>Schools &amp; press</h3>
+          <p class="muted">
+            We bring the team to classrooms and community events, and we are happy to talk
+            to anyone covering student engineering in Houston.
+          </p>
+          <p style="margin:18px 0 0"><a class="arrow-link" href="mailto:apollos@uh.edu">Email us
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER (keep this block in sync across all pages) ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+          <span class="brand__text">
+            <span class="brand__name">Houston Apollos</span>
+            <span class="brand__sub">University of Houston</span>
+          </span>
+        </a>
+        <p>
+          A student engineering team at the University of Houston competing in the
+          University Rover Challenge.
+        </p>
+        <!-- EDIT: point these at your real accounts, or delete the ones you don't use. -->
+        <div class="socials">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sponsors.html">Sponsors</a></li>
+          <li><a href="join.html">Join Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <!-- EDIT: real email address -->
+          <li><a href="mailto:apollos@uh.edu">apollos@uh.edu</a></li>
+          <li><a href="https://urc.marssociety.org/" rel="noopener">University Rover Challenge</a></li>
+          <li><a href="https://www.uh.edu/" rel="noopener">University of Houston</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span data-year>2026</span> Houston Apollos &middot; University of Houston</span>
+      <span class="motto">Ad astra</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
